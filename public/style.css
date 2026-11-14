@@ -1,0 +1,51 @@
+*{box-sizing:border-box;margin:0}
+:root{--a:#22d3ee;--b:#8b5cf6}
+body{font-family:'Segoe UI',system-ui,sans-serif;color:#e6edf7;background:#070b16;height:100vh;overflow:hidden}
+.app{display:flex;height:100vh}
+.side{width:360px;padding:20px;display:flex;flex-direction:column;gap:12px;overflow:hidden;z-index:2;border-right:1px solid #ffffff14;
+ background:radial-gradient(600px 300px at 0 0,#22d3ee33,transparent),radial-gradient(500px 400px at 100% 100%,#8b5cf633,transparent),#0b1224}
+.brand{display:flex;gap:12px;align-items:center}
+.logo{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-size:24px;background:linear-gradient(135deg,var(--a),var(--b));box-shadow:0 0 24px #22d3ee66}
+h1{font-size:1.25rem}
+h1 span{background:linear-gradient(90deg,var(--a),var(--b));background-clip:text;-webkit-background-clip:text;color:transparent}
+small{color:#8fa3c4;font-size:.75rem}
+.ecg{width:100%;height:26px;fill:none;stroke:#34d399;stroke-width:2;stroke-dasharray:300;animation:e 3s linear infinite}
+@keyframes e{from{stroke-dashoffset:300}to{stroke-dashoffset:-300}}
+#stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.st{padding:10px 2px;border-radius:12px;text-align:center;background:#ffffff0d;border:1px solid #ffffff14;font-size:.62rem;color:#8fa3c4}
+.st b{display:block;font-size:1.4rem;color:var(--c)}
+#search{padding:11px 14px;border-radius:12px;border:1px solid #ffffff1f;background:#ffffff0d;color:#fff;outline:none}
+#search:focus{border-color:var(--a);box-shadow:0 0 0 3px #22d3ee33}
+#chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{padding:6px 12px;border-radius:99px;font-size:.78rem;cursor:pointer;border:1px solid #ffffff1f;background:#ffffff0a}
+.chip.on{background:var(--c);color:#06101f;font-weight:700;border-color:transparent}
+#near{padding:11px;border:0;border-radius:12px;font-weight:700;cursor:pointer;color:#06101f;background:linear-gradient(90deg,var(--a),var(--b))}
+#list{flex:1;overflow:auto;display:flex;flex-direction:column;gap:6px;padding-right:4px}
+.row{display:flex;gap:10px;align-items:center;padding:9px 10px;border-radius:12px;background:#ffffff08;cursor:pointer;border-left:3px solid var(--c);transition:.15s}
+.row:hover{background:#ffffff14;transform:translateX(3px)}
+.row b{font-size:.85rem;display:block}
+.row em{margin-left:auto;font-style:normal;color:var(--c);font-size:.75rem;white-space:nowrap}
+.about{font-size:.68rem;color:#6f84a8}
+main{flex:1;position:relative}
+#map{height:100%;background:#0b1224}
+.glass{position:absolute;z-index:1000;background:#0b1224cc;backdrop-filter:blur(14px);border:1px solid #ffffff1f;border-radius:16px;box-shadow:0 10px 30px #0008}
+.legend{left:16px;bottom:24px;padding:12px 14px;font-size:.8rem}
+.legend h4{margin-bottom:6px;color:var(--a);font-size:.72rem;letter-spacing:1px}
+.legend div{display:flex;align-items:center;gap:8px;margin:4px 0}
+.legend i{width:12px;height:12px;border-radius:50%;background:var(--c);box-shadow:0 0 8px var(--c)}
+.bases{right:16px;bottom:24px;display:flex;gap:8px;padding:8px}
+.base{width:68px;text-align:center;font-size:.68rem;cursor:pointer;padding:4px;border-radius:10px;border:2px solid transparent;color:#aab8d3}
+.base span{display:block;height:36px;border-radius:8px;margin-bottom:4px;background:linear-gradient(135deg,var(--g))}
+.base.on{border-color:var(--a);color:#fff}
+.pin{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-size:17px;background:#0b1224;border:2px solid var(--c);box-shadow:0 0 14px var(--c)}
+.marker-cluster{background:#22d3ee44!important}
+.marker-cluster div{background:linear-gradient(135deg,#22d3ee,#8b5cf6)!important;color:#fff;font-weight:700}
+.leaflet-popup-content-wrapper{background:#0b1224;color:#e6edf7;border-radius:16px;padding:0;overflow:hidden;border:1px solid #ffffff22}
+.leaflet-popup-content{margin:0}
+.leaflet-popup-tip{background:#0b1224}
+.ph{padding:12px 14px;background:var(--c);color:#06101f;font-weight:700}
+.pb{padding:12px 14px;font-size:.82rem;line-height:1.7}
+.pb a{display:block;margin-top:8px;text-align:center;padding:8px;border-radius:10px;background:linear-gradient(90deg,#22d3ee,#8b5cf6);color:#06101f;font-weight:700;text-decoration:none}
+@media(max-width:800px){.app{flex-direction:column}.side{width:100%;height:48vh}.bases{display:none}}
+.marker-cluster{width:40px;height:40px;border-radius:50%}
+.marker-cluster div{width:30px;height:30px;margin:5px 0 0 5px;border-radius:50%;text-align:center;line-height:30px}

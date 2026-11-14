@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Haripur HealthRadar | Web GIS</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="brand">
+      <div class="logo">&#10010;</div>
+      <div><h1>Haripur <span>HealthRadar</span></h1><small>Healthcare Web GIS | Haripur, KPK</small></div>
+    </div>
+    <svg viewBox="0 0 200 30" preserveAspectRatio="none" class="ecg"><polyline points="0,15 40,15 50,15 58,3 66,27 74,15 120,15 130,15 138,3 146,27 154,15 200,15"/></svg>
+    <div id="stats"></div>
+    <input id="search" placeholder="Search hospital, pharmacy, clinic...">
+    <div id="chips"></div>
+    <button id="near">&#128205; Nearest facility to me</button>
+    <div id="list"></div>
+    <p class="about">Study area: Haripur city and Khalabat Township. Data: Google Maps (Nov 2026), PostgreSQL/PostGIS, served via API. MET418 Midterm | FA23-BRG-051</p>
+  </aside>
+  <main>
+    <div id="map"></div>
+    <div class="glass legend" id="legend"></div>
+    <div class="glass bases" id="bases"></div>
+  </main>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
