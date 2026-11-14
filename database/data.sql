@@ -1,10 +1,30 @@
-CREATE TABLE health_facilities (
-  id        SERIAL PRIMARY KEY,
-  name      VARCHAR(150) NOT NULL,
-  type      VARCHAR(30) NOT NULL CHECK (type IN ('Hospital','Clinic','Pharmacy','Medical Store')),
-  ownership VARCHAR(20),
-  area      TEXT,
-  phone     VARCHAR(30),
-  geom      GEOMETRY(Point, 4326) NOT NULL
-);
-CREATE INDEX idx_health_geom ON health_facilities USING GIST (geom);
+INSERT INTO health_facilities (name,type,ownership,area,phone,geom) VALUES ('Life Care Hospital','Hospital','Private','Naseem Town / GT Road','+92 995 321234',ST_SetSRID(ST_MakePoint(72.90536,33.98821),4326));
+INSERT INTO health_facilities (name,type,ownership,area,phone,geom) VALUES ('Haripur International Hospital','Hospital','Private','Tarbela-Gheel Rd','+92 995 628375',ST_SetSRID(ST_MakePoint(72.93176,34.01452),4326));
+INSERT INTO health_facilities (name,type,ownership,area,phone,geom) VALUES ('Durrani Hospital','Hospital','Private','Afzal Abad / Main Jail Rd','+92 995 610900',ST_SetSRID(ST_MakePoint(72.91686,33.98426),4326));
+INSERT INTO health_facilities (name,type,ownership,area,phone,geom) VALUES ('Khalabat Medical Care Hospital (KMC)','Hospital','Private','Khalabat Township Sector 4','+92 995 622740',ST_SetSRID(ST_MakePoint(72.90932,34.02421),4326));
+INSERT INTO health_facilities (name,type,ownership,area,phone,geom) VALUES ('Noor Surgical Hospital','Hospital','Private','GT Road D-Stop','+92 995 611748',ST_SetSRID(ST_MakePoint(72.92893,33.99494),4326));
+INSERT INTO health_facilities (name,type,ownership,area,phone,geom) VALUES ('DHQ Hospital Haripur','Hospital','Public','Dheenda Rd','+92 995 611850',ST_SetSRID(ST_MakePoint(72.91556,33.99956),4326));
+INSERT INTO health_facilities (name,type,ownership,area,phone,geom) VALUES ('Women and Children Hospital','Hospital','Public','Mohalla Qadeem','+92 995 216745',ST_SetSRID(ST_MakePoint(72.93253,33.99492),4326));
+INSERT INTO health_facilities (name,type,ownership,area,phone,geom) VALUES ('Chaudhary Medical Center','Hospital','Private','Naseem Town','+92 995 321374',ST_SetSRID(ST_MakePoint(72.9042,33.98851),4326));
+INSERT INTO health_facilities (name,type,ownership,area,phone,geom) VALUES ('Seena Medical Center','Hospital','Private','GT Road (opp. Total Petrol Pump)','+92 345 9687617',ST_SetSRID(ST_MakePoint(72.94727,33.9943),4326));
+INSERT INTO health_facilities (name,type,ownership,area,phone,geom) VALUES ('Allied Clinic','Clinic','Private','Circular Rd','+92 995 311861',ST_SetSRID(ST_MakePoint(72.93609,34.00122),4326));
+INSERT INTO health_facilities (name,type,ownership,area,phone,geom) VALUES ('Insha Healthcare Clinic','Clinic','Private','Mohalla Qadeem','+92 336 0905515',ST_SetSRID(ST_MakePoint(72.93329,33.99433),4326));
+INSERT INTO health_facilities (name,type,ownership,area,phone,geom) VALUES ('Dr Aalia Sarfaraz Clinic','Clinic','Private','Circular Rd Darvesh',NULL,ST_SetSRID(ST_MakePoint(72.93018,33.99847),4326));
+INSERT INTO health_facilities (name,type,ownership,area,phone,geom) VALUES ('Ali Diagnostic Clinic','Clinic','Private','Opp. DHQ Dheenda',NULL,ST_SetSRID(ST_MakePoint(72.91461,34.00185),4326));
+INSERT INTO health_facilities (name,type,ownership,area,phone,geom) VALUES ('Prime Diagnostic Haripur','Clinic','Private','New Sabzi Mandi Rd','+92 370 0814031',ST_SetSRID(ST_MakePoint(72.92459,33.99532),4326));
+INSERT INTO health_facilities (name,type,ownership,area,phone,geom) VALUES ('Haripur CT Scan and Open MRI','Clinic','Private','GT Road Darvesh','+92 330 5452344',ST_SetSRID(ST_MakePoint(72.9276,33.99521),4326));
+INSERT INTO health_facilities (name,type,ownership,area,phone,geom) VALUES ('Popular Clinics & Diagnostic Centre','Clinic','Private','Circular Rd Mohalla Khoo','+92 332 3115333',ST_SetSRID(ST_MakePoint(72.93037,34.00155),4326));
+INSERT INTO health_facilities (name,type,ownership,area,phone,geom) VALUES ('Premium Diagnostics Haripur','Clinic','Private','Mohalla Asifabad','+92 995 628188',ST_SetSRID(ST_MakePoint(72.93056,34.00156),4326));
+INSERT INTO health_facilities (name,type,ownership,area,phone,geom) VALUES ('Noor Pharmacy','Pharmacy','Private','GT Road D-Stop','+92 995 612800',ST_SetSRID(ST_MakePoint(72.9288,33.99501),4326));
+INSERT INTO health_facilities (name,type,ownership,area,phone,geom) VALUES ('Vaccine Pharmacy','Pharmacy','Private','Main Bazar','+92 323 1546790',ST_SetSRID(ST_MakePoint(72.93363,33.99971),4326));
+INSERT INTO health_facilities (name,type,ownership,area,phone,geom) VALUES ('Arslan Pharmacy','Pharmacy','Private','GT Road Awan Colony','+92 301 8702040',ST_SetSRID(ST_MakePoint(72.93719,33.99452),4326));
+INSERT INTO health_facilities (name,type,ownership,area,phone,geom) VALUES ('Popular Pharmacy','Pharmacy','Private','Siddique Akbar Chowk',NULL,ST_SetSRID(ST_MakePoint(72.93342,33.99444),4326));
+INSERT INTO health_facilities (name,type,ownership,area,phone,geom) VALUES ('Life Pharmacy','Pharmacy','Private','Khalabat Twp Sector 2','+92 311 9832051',ST_SetSRID(ST_MakePoint(72.90914,34.01896),4326));
+INSERT INTO health_facilities (name,type,ownership,area,phone,geom) VALUES ('Health Care Pharmacy','Pharmacy','Private','Khalabat Twp Sector 2','+92 995 259995',ST_SetSRID(ST_MakePoint(72.90969,34.01928),4326));
+INSERT INTO health_facilities (name,type,ownership,area,phone,geom) VALUES ('Doctors Pharmacy','Pharmacy','Private','Khalabat Twp Sector 2',NULL,ST_SetSRID(ST_MakePoint(72.90347,34.016),4326));
+INSERT INTO health_facilities (name,type,ownership,area,phone,geom) VALUES ('Jamil Medical Store','Medical Store','Private','GT Road Pandak','+92 315 5804094',ST_SetSRID(ST_MakePoint(72.93736,33.99428),4326));
+INSERT INTO health_facilities (name,type,ownership,area,phone,geom) VALUES ('NewPak Medical Store','Medical Store','Private','GT Road near Trauma Center',NULL,ST_SetSRID(ST_MakePoint(72.93136,33.99462),4326));
+INSERT INTO health_facilities (name,type,ownership,area,phone,geom) VALUES ('Health First Medical Store','Medical Store','Private','Khalabat Twp Pakhral Chowk','+92 334 5663889',ST_SetSRID(ST_MakePoint(72.90795,34.01516),4326));
+INSERT INTO health_facilities (name,type,ownership,area,phone,geom) VALUES ('City Medicos and Cosmetics','Medical Store','Private','Khalabat Twp Chandni Chowk','+92 300 5490126',ST_SetSRID(ST_MakePoint(72.91727,34.01908),4326));
+INSERT INTO health_facilities (name,type,ownership,area,phone,geom) VALUES ('Pakistan Medical Store','Medical Store','Private','Main Bazar',NULL,ST_SetSRID(ST_MakePoint(72.93861,34.00204),4326));
+INSERT INTO health_facilities (name,type,ownership,area,phone,geom) VALUES ('United Health Medical Store','Medical Store','Private','Mochi Bazar','+92 336 5870013',ST_SetSRID(ST_MakePoint(72.93349,33.99458),4326));
