@@ -9,7 +9,7 @@ const $ = id => document.getElementById(id);
 const map = L.map('map', { zoomControl:false, maxZoom:19 }).setView([34.005, 72.925], 13);
 L.control.zoom({ position:'topright' }).addTo(map);
 
-// Basemap catalogue (sab free, bina API key ke)
+// Basemap catalogue (all free, no API key needed)
 const E = 'https://server.arcgisonline.com/ArcGIS/rest/services/';
 const B = {
   Dark:{ g:'#1b2233,#3a4560', l:L.layerGroup([
@@ -70,18 +70,20 @@ $('chips').onclick = e => {
 $('search').oninput = e => { q = e.target.value.toLowerCase(); render(); };
 $('list').onclick = e => { const el = e.target.closest('.row'); if (el) openFacility(el.dataset.id); };
 
-// Frontend backend (API) se data fetch karta hai
+// The frontend fetches the data from the API
 fetch('/api/facilities').then(r => r.json()).then(d => {
   data = d; ui(); render(); map.fitBounds(cluster.getBounds().pad(0.1));
-});
+}).catch(() => { $('list').innerHTML = '<p class="about">Could not load the data. Please refresh the page.</p>'; });
 
-// Nearest facility: browser location -> API (PostGIS distance) -> sorted list
+// Nearest facility: browser location -> API (PostGIS distance) -> list sorted by distance
 $('near').onclick = () => {
+  if (!navigator.geolocation) { alert('Your browser does not support location services.'); return; }
   navigator.geolocation.getCurrentPosition(async pos => {
     const { latitude, longitude } = pos.coords;
     data = await (await fetch(`/api/facilities?lat=${latitude}&lon=${longitude}`)).json();
     render();
     L.circleMarker([latitude, longitude], { radius:8, color:'#fff', fillColor:'#8b5cf6', fillOpacity:1 }).addTo(map).bindPopup('You are here');
-    openFacility($('list').firstElementChild.dataset.id);
-  }, () => alert('Location allow karo'));
+    const first = $('list').firstElementChild;
+    if (first) openFacility(first.dataset.id);
+  }, () => alert('Location access is blocked. Please allow location in your browser settings and try again.'));
 };

@@ -11,5 +11,5 @@ CREATE TABLE health_facilities (
 );
 CREATE INDEX idx_health_geom ON health_facilities USING GIST (geom);
 
--- CSV import ke liye temporary table
+-- Temporary table used to import the CSV
 CREATE TABLE staging (name text, type text, ownership text, area text, phone text, lat double precision, lon double precision);

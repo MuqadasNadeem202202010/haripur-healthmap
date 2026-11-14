@@ -1,6 +1,6 @@
 const { Pool } = require('pg');
 
-// Local DB pe SSL nahi, cloud (Neon) pe SSL chahiye
+// No SSL for a local database; SSL is required for the cloud database (Neon)
 const url = process.env.DATABASE_URL || '';
 const pool = new Pool({
   connectionString: url,
@@ -11,7 +11,7 @@ module.exports = async (req, res) => {
   try {
     const { lat, lon } = req.query;
     const hasPos = lat && lon;
-    // ST_AsGeoJSON = geometry ko GeoJSON me badalta hai, Leaflet seedha samajhta hai
+    // ST_AsGeoJSON converts the geometry to GeoJSON, which Leaflet reads directly
     const sql = `
       SELECT json_build_object('type','FeatureCollection','features',
         COALESCE(json_agg(json_build_object(

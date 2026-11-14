@@ -1,4 +1,4 @@
-// Sirf local test ke liye: public/ files serve karta hai aur /api/facilities chalata hai
+// For local testing only: serves the public/ files and runs /api/facilities
 const http = require('http'), fs = require('fs'), path = require('path'), url = require('url');
 const handler = require('./api/facilities.js');
 const types = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript' };
@@ -17,4 +17,4 @@ http.createServer((req, res) => {
     res.setHeader('Content-Type', types[path.extname(f)] || 'text/plain');
     res.end(d);
   });
-}).listen(3000, () => console.log('Server chal gaya: http://localhost:3000'));
+}).listen(3000, () => console.log('Server running: http://localhost:3000'));
