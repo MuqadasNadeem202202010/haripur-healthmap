@@ -76,14 +76,25 @@ fetch('/api/facilities').then(r => r.json()).then(d => {
 }).catch(() => { $('list').innerHTML = '<p class="about">Could not load the data. Please refresh the page.</p>'; });
 
 // Nearest facility: browser location -> API (PostGIS distance) -> list sorted by distance
+let you;
 $('near').onclick = () => {
   if (!navigator.geolocation) { alert('Your browser does not support location services.'); return; }
+  const btn = $('near'), label = btn.innerHTML;
+  btn.disabled = true; btn.innerHTML = 'Finding your location...';
   navigator.geolocation.getCurrentPosition(async pos => {
-    const { latitude, longitude } = pos.coords;
-    data = await (await fetch(`/api/facilities?lat=${latitude}&lon=${longitude}`)).json();
-    render();
-    L.circleMarker([latitude, longitude], { radius:8, color:'#fff', fillColor:'#8b5cf6', fillOpacity:1 }).addTo(map).bindPopup('You are here');
-    const first = $('list').firstElementChild;
-    if (first) openFacility(first.dataset.id);
-  }, () => alert('Location access is blocked. Please allow location in your browser settings and try again.'));
+    try {
+      btn.innerHTML = 'Finding nearest facility...';
+      const { latitude, longitude } = pos.coords;
+      data = await (await fetch(`/api/facilities?lat=${latitude}&lon=${longitude}`)).json();
+      render();
+      if (you) map.removeLayer(you);
+      you = L.circleMarker([latitude, longitude], { radius:8, color:'#fff', fillColor:'#8b5cf6', fillOpacity:1 }).addTo(map).bindPopup('You are here');
+      const first = $('list').firstElementChild;
+      if (first) openFacility(first.dataset.id);
+    } catch (e) { alert('Could not load nearby facilities. Please try again.'); }
+    btn.disabled = false; btn.innerHTML = label;
+  }, () => {
+    btn.disabled = false; btn.innerHTML = label;
+    alert('Location access is blocked or timed out. Please allow location in your browser settings and try again.');
+  }, { enableHighAccuracy: false, timeout: 10000, maximumAge: 300000 });
 };
